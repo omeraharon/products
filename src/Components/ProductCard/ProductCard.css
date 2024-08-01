@@ -1,0 +1,27 @@
+.product-card {
+    width: 45%;
+    overflow-wrap: break-word;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card-button {
+    background-color: var(--purple);
+    border: none;
+    margin-bottom: 1vh;
+}
+
+.product-card-button:active, .product-card-button:focus {
+    background-color: var(--black) !important;
+}
+
+.product-card-image {
+    width: 20vw;
+    display: flex;
+    align-self: center;
+}

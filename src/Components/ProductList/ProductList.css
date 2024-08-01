@@ -1,9 +1,12 @@
-header {
+.product-list {
     width: 100%;
-    background-color: var(--light-gray);
-    padding: 2vw;
-}
-
-header h1 {
-    color: var(--purple);
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4vw;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
 }

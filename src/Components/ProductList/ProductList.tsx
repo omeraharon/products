@@ -1,7 +1,16 @@
+import { observer } from "mobx-react-lite";
+import productsStore from "../../Store/ProductsStore";
+import ProductCard from "../ProductCard/ProductCard";
 import "./ProductList.css";
 
-function ProductList() {
-    return <></>;
-}
+const ProductList: React.FC = () => {
+    return (
+        <div className="product-list">
+            {productsStore.getProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+    );
+};
 
-export default ProductList;
+export default observer(ProductList);

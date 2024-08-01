@@ -13,6 +13,10 @@
   --dark-purple:  rgb(73, 25, 162);
 }
 
+#root {
+  overflow: hidden;
+}
+
 body {
   width: 100vw;
   height: 100vh;

@@ -5,6 +5,7 @@ import { apiUrl } from "./Enums";
 import productsStore from "./Store/ProductsStore";
 import { persistStore } from "./Services/MobxService";
 import { ProductModel } from "./Models/ProductModel";
+import ProductList from "./Components/ProductList/ProductList";
 
 const HandleHydrate = () => {
     return new Promise(async (resolve) => {
@@ -13,11 +14,15 @@ const HandleHydrate = () => {
     });
 };
 
-function App() {
+const App: React.FC = () => {
     useEffect(() => {
-        HandleHydrate();
-        getProducts();
+        init();
     }, []);
+
+    const init = async () => {
+        await HandleHydrate();
+        !productsStore.getProducts.length && getProducts(); // get products only if store empty (to simulate a mock)
+    };
 
     const getProducts = async () => {
         try {
@@ -31,8 +36,9 @@ function App() {
     return (
         <>
             <Header />
+            <ProductList />
         </>
     );
-}
+};
 
 export default App;
