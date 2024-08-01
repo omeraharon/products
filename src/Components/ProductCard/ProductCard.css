@@ -10,12 +10,6 @@
     height: 100%;
 }
 
-.product-card-button {
-    background-color: var(--purple);
-    border: none;
-    margin-bottom: 1vh;
-}
-
 .product-card-button:active, .product-card-button:focus {
     background-color: var(--black) !important;
 }

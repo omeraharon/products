@@ -31,6 +31,10 @@ class ProductsStore {
     replaceProduct(newProduct: ProductModel) {
        this.products = this.products.map((product) => (product.id === newProduct.id ? { ...newProduct } : product));
     }
+
+    addProduct(newProduct: ProductModel) {
+        this.products.push(newProduct)
+    }
    
 }
 

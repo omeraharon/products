@@ -11,6 +11,7 @@
   --light-purple: rgb(180, 144, 248);
   --light-gray: rgb(250, 250, 250);
   --dark-purple:  rgb(73, 25, 162);
+  --red:  rgb(162, 25, 27);
 }
 
 #root {
@@ -22,4 +23,10 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
+}
+
+.purple-button {
+  background-color: var(--purple);
+  border: none;
+  margin-bottom: 1vh;
 }

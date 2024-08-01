@@ -6,6 +6,8 @@ import * as yup from "yup";
 import { ProductModel } from "../../Models/ProductModel";
 import productsStore from "../../Store/ProductsStore";
 
+import "./ProductModal.css";
+
 const ProductModal: React.FC = () => {
     const handleClose = () => appStore.closeModal();
     const product = appStore.getModalData;
@@ -21,7 +23,7 @@ const ProductModal: React.FC = () => {
     });
 
     const handleSubmit = (newProduct: ProductModel) => {
-        productsStore.replaceProduct(newProduct);
+        product ? productsStore.replaceProduct(newProduct) : productsStore.addProduct(newProduct);
         appStore.closeModal();
     };
     return (
@@ -31,14 +33,14 @@ const ProductModal: React.FC = () => {
                     validationSchema={schema}
                     onSubmit={handleSubmit}
                     initialValues={{
-                        id: product?.id || productsStore.getProducts.length,
+                        id: product?.id || productsStore.getProducts.length + 1,
                         title: product?.title || "",
                         description: product?.description || "",
                         price: product?.price || 0,
                         image: product?.image || "",
                     }}
                 >
-                    {({ handleSubmit, setFieldValue, values, touched, errors }) => (
+                    {({ handleSubmit, setFieldValue, values, errors }) => (
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="productForm.ControlInput01">
                                 <Form.Label>Title</Form.Label>
@@ -47,9 +49,8 @@ const ProductModal: React.FC = () => {
                                     value={values.title}
                                     placeholder="title"
                                     autoFocus
-                                    isValid={touched.title && !errors.title}
                                 />
-                                <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
+                                <span className="product-form-error-message">{errors.title}</span>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="productForm.ControlInput02">
                                 <Form.Label>Description</Form.Label>
@@ -60,6 +61,7 @@ const ProductModal: React.FC = () => {
                                     value={values.description}
                                     placeholder="description"
                                 />
+                                <span className="product-form-error-message">{errors.description}</span>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="productForm.ControlInput03">
                                 <Form.Label>Price</Form.Label>
@@ -69,10 +71,12 @@ const ProductModal: React.FC = () => {
                                     value={values.price}
                                     placeholder="price"
                                 />
+                                <span className="product-form-error-message">{errors.price}</span>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="productForm.ControlInput04">
                                 <Form.Label>Image (link)</Form.Label>
                                 <Form.Control onChange={(e) => setFieldValue("image", e.target.value)} value={values.image} placeholder="image" />
+                                <span className="product-form-error-message">{errors.image}</span>
                             </Form.Group>
                             <Button variant="secondary" onClick={handleClose}>
                                 Close

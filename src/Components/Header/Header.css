@@ -2,6 +2,8 @@ header {
     width: 100%;
     background-color: var(--light-gray);
     padding: 2vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 header h1 {

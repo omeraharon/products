@@ -1,0 +1,4 @@
+.product-form-error-message {
+    color: var(--red);
+    font-weight: bold;
+}

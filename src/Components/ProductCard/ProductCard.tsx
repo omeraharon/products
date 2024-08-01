@@ -4,6 +4,7 @@ import "./ProductCard.css";
 import { Button, Row } from "react-bootstrap";
 import productsStore from "../../Store/ProductsStore";
 import appStore from "../../Store/AppStore";
+import { observer } from "mobx-react-lite";
 
 interface ProductCardProps {
     product: ProductModel;
@@ -22,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <b>Price:</b> {product.price || ""}
                 </Card.Text>
                 <Row>
-                    <Button className={`product-card-button`} onClick={() => appStore.showModal(product)}>
+                    <Button className={`purple-button`} onClick={() => appStore.showModal(product)}>
                         Edit Item
                     </Button>
                     <Button variant="dark" onClick={() => productsStore.deleteProducct(product.id)}>
@@ -34,4 +35,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     );
 };
 
-export default ProductCard;
+export default observer(ProductCard);

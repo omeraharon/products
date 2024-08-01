@@ -7,6 +7,7 @@ import { persistStore } from "./Services/MobxService";
 import { ProductModel } from "./Models/ProductModel";
 import ProductList from "./Components/ProductList/ProductList";
 import ProductModal from "./Components/ProductModal/ProductModal";
+import ActionsArea from "./Components/ActionsArea/ActionsArea";
 
 const HandleHydrate = () => {
     return new Promise(async (resolve) => {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
     return (
         <>
             <Header />
+            <ActionsArea />
             <ProductList />
             <ProductModal />
         </>
