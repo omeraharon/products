@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { Button, Form, Modal } from "react-bootstrap";
 import appStore from "../../Store/AppStore";
-import * as formik from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 import { ProductModel } from "../../Models/ProductModel";
 import productsStore from "../../Store/ProductsStore";
@@ -12,13 +12,11 @@ const ProductModal: React.FC = () => {
     const handleClose = () => appStore.closeModal();
     const product = appStore.getModalData;
 
-    const { Formik } = formik;
-
     const schema = yup.object().shape({
         id: yup.number().required(),
         title: yup.string().required(),
         description: yup.string().required(),
-        price: yup.number().required(),
+        price: yup.number().required().integer().min(1),
         image: yup.string().required(),
     });
 
@@ -38,6 +36,7 @@ const ProductModal: React.FC = () => {
                         description: product?.description || "",
                         price: product?.price || 0,
                         image: product?.image || "",
+                        creationDate: product?.creationDate || new Date(),
                     }}
                 >
                     {({ handleSubmit, setFieldValue, values, errors }) => (

@@ -3,5 +3,25 @@
     width: 100%;
     margin: 2vh 3vw 0 3vw;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.search-sort-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    margin-top: 3vh;
+}
+
+.add-product {
+    width: 30vw;
+}
+
+.products-search {
+    width: 50vw;
+}
+
+.sort-products {
+    width: 30vw;
+    margin-bottom: 3vh;
 }

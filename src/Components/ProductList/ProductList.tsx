@@ -4,9 +4,10 @@ import ProductCard from "../ProductCard/ProductCard";
 import "./ProductList.css";
 
 const ProductList: React.FC = () => {
+    const products = productsStore.getSearchProducts.length ? productsStore.getSearchProducts : productsStore.getProducts;
     return (
         <div className="product-list">
-            {productsStore.getProducts.map((product) => (
+            {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
         </div>

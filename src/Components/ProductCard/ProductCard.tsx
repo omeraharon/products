@@ -22,6 +22,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <Card.Text>
                     <b>Price:</b> {product.price || ""}
                 </Card.Text>
+                <Card.Text>
+                    <b>Creation Date:</b> {new Date(product.creationDate)?.toLocaleDateString() || ""}
+                </Card.Text>
                 <Row>
                     <Button className={`purple-button`} onClick={() => appStore.showModal(product)}>
                         Edit Item

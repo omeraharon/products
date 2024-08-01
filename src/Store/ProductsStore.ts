@@ -9,6 +9,7 @@ class ProductsStore {
     }
 
     products: ProductModel[] = []
+    searchProducts: ProductModel[] = []
     persist_data = ["products"]
     
     async loadStoreData() {
@@ -20,8 +21,15 @@ class ProductsStore {
         return this.products
     }
 
+    get getSearchProducts() {
+        return this.searchProducts
+    }
+
     setProducts(products: ProductModel[]) {
         this.products = products;
+    }
+    setSearchProducts(products: ProductModel[]) {
+        this.searchProducts = products;
     }
 
     deleteProducct(id: number) {
@@ -34,6 +42,22 @@ class ProductsStore {
 
     addProduct(newProduct: ProductModel) {
         this.products.push(newProduct)
+    }
+
+    sortByName() {
+        this.products = this.products.sort((a, b) => {
+            if (a.title.toLocaleLowerCase() < b.title.toLocaleLowerCase()) {
+                return -1;
+            }
+            if (a.title.toLocaleLowerCase() > b.title.toLocaleLowerCase()) {
+                return 1;
+            }
+            return 0;
+         });
+    }
+
+    sortByDate() {
+        this.products = this.products.sort(({creationDate: a}, {creationDate: b}) => a < b ? 1 : a > b ? -1 : 0)
     }
    
 }

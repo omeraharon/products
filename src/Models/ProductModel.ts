@@ -4,4 +4,5 @@ export interface ProductModel {
     description: string;
     price: number;
     image: string;
+    creationDate: Date;
 }

@@ -8,6 +8,7 @@ import { ProductModel } from "./Models/ProductModel";
 import ProductList from "./Components/ProductList/ProductList";
 import ProductModal from "./Components/ProductModal/ProductModal";
 import ActionsArea from "./Components/ActionsArea/ActionsArea";
+import { getRandomDate } from "./Services/AppService";
 
 const HandleHydrate = () => {
     return new Promise(async (resolve) => {
@@ -30,7 +31,10 @@ const App: React.FC = () => {
         try {
             const res = await fetch(apiUrl);
             const products: ProductModel[] = await res.json();
-            products?.length && productsStore.setProducts(products);
+            if (products?.length) {
+                products.map((product) => (product.creationDate = getRandomDate(new Date(2012, 0, 1), new Date()))); // adding creation date to mock
+                productsStore.setProducts(products);
+            }
         } catch (err) {
             console.log(err);
         }
