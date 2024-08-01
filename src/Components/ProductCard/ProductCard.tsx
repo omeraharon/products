@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import "./ProductCard.css";
 import { Button, Row } from "react-bootstrap";
 import productsStore from "../../Store/ProductsStore";
+import appStore from "../../Store/AppStore";
 
 interface ProductCardProps {
     product: ProductModel;
@@ -21,7 +22,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <b>Price:</b> {product.price || ""}
                 </Card.Text>
                 <Row>
-                    <Button className={`product-card-button`}>Edit Item</Button>
+                    <Button className={`product-card-button`} onClick={() => appStore.showModal(product)}>
+                        Edit Item
+                    </Button>
                     <Button variant="dark" onClick={() => productsStore.deleteProducct(product.id)}>
                         Delete Item
                     </Button>

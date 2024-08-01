@@ -27,6 +27,10 @@ class ProductsStore {
     deleteProducct(id: number) {
         this.products = this.products.filter(set => set.id !== id)
     }
+
+    replaceProduct(newProduct: ProductModel) {
+       this.products = this.products.map((product) => (product.id === newProduct.id ? { ...newProduct } : product));
+    }
    
 }
 
