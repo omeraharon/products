@@ -1,7 +1,6 @@
 export interface ProductModel {
     id: number;
-    name: string;
+    title: string;
     description: string;
     price: number;
-    creationDate: Date;
 }

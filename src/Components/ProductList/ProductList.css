@@ -1,0 +1,9 @@
+header {
+    width: 100%;
+    background-color: var(--light-gray);
+    padding: 2vw;
+}
+
+header h1 {
+    color: var(--purple);
+}
